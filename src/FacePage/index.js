@@ -6,7 +6,7 @@ import mapDispatchToProps from './mapDispatchToProps';
 import Camera from './Camera'; 
 import Canva from './Canva'; 
 import * as faceapi from 'face-api.js';
-
+import Button from '@material-ui/core/Button';
 
 class FacePage extends Component {
     constructor(props) {
@@ -21,7 +21,10 @@ class FacePage extends Component {
         this.setVideoHandler = this.setVideoHandler.bind(this);
         this.isModelLoaded =  this.isModelLoaded.bind(this);
     }
-    
+    filtro1(){
+        console.log("filtro 1")
+    }
+
     async setVideoHandler(){
         if (this.isModelLoaded()!==undefined){
             try{
@@ -33,31 +36,31 @@ class FacePage extends Component {
                     const resizedResult = faceapi.resizeResults(result, dims);
                     // faceapi.draw.drawDetections(this.props.canvas.current, resizedResult);
                     // faceapi.draw.drawFaceLandmarks(this.props.canvas.current, resizedResult);
-                    faceapi.draw.drawFaceExpressions(this.props.canvas.current,resizedResult);
+                    // faceapi.draw.drawFaceExpressions(this.props.canvas.current,resizedResult);
                     // faceapi.draw.drawDetections(this.props.canvas.current,resizedResult);
                     console.log("detectando => ", resizedResult)
 
 
-                    const age = resizedResult.age;
-                    const interpolatedAge = interpolateAgePredictions(age);
-                    // const gender = `genero ${resizedResult.gender}`;
-                    const expressions = resizedResult.expressions;
-                    const maxValue = Math.max(...Object.values(expressions));
-                    const emotion = Object.keys(expressions).filter(
-                        item => expressions[item] === maxValue
-                      );
+                    // const age = resizedResult.age;
+                    // const interpolatedAge = interpolateAgePredictions(age);
+                    // // const gender = `genero ${resizedResult.gender}`;
+                    // const expressions = resizedResult.expressions;
+                    // const maxValue = Math.max(...Object.values(expressions));
+                    // const emotion = Object.keys(expressions).filter(
+                    //     item => expressions[item] === maxValue
+                    //   );
                     //   document.getElementById("age").innerText = `Age - ${interpolatedAge}`;
                     //   document.getElementById("gender").innerText = `Gender - ${gender}`;
                     //   document.getElementById("emotion").innerText = `Emotion - ${emotion[0]}`;
 
-                      function interpolateAgePredictions(age) {
-                        predictedAges = [age].concat(predictedAges).slice(0, 30);
-                        const avgPredictedAge =
-                          predictedAges.reduce((total, a) => total + a) / predictedAges.length;
-                        return avgPredictedAge;
-                      }
-                      const emotionPro = `Emocion ${emotion}`;
-                      const edadPro = `Edad ${Math.trunc(interpolatedAge)}`;
+                    //   function interpolateAgePredictions(age) {
+                    //     predictedAges = [age].concat(predictedAges).slice(0, 30);
+                    //     const avgPredictedAge =
+                    //       predictedAges.reduce((total, a) => total + a) / predictedAges.length;
+                    //     return avgPredictedAge;
+                    //   }
+                    //   const emotionPro = `Emocion ${emotion}`;
+                    //   const edadPro = `Edad ${Math.trunc(interpolatedAge)}`;
 
                  
                    
@@ -68,33 +71,6 @@ class FacePage extends Component {
                     //ctx.lineTo(x,y);
                     //ctx.stroke();
                     canvasElement.fillStyle='white';
-
-                    //ingresasr texto dentro del canvas
-                    canvasElement.font="15px Arial";
-                    let positionX=result.landmarks.positions[3].x+80,
-                        positionY=result.landmarks.positions[12].y- -80;
-                        canvasElement.strokeText( (result.gender)==="male" ? "Hombre" :"Mujer", 
-                        positionX,positionY ); 
-
-
-                    canvasElement.font="15px Arial";
-                    let positionX2=result.landmarks.positions[3].x+140,
-                        positionY2=result.landmarks.positions[12].y- -80;
-                    canvasElement.strokeText( (result.genderProbability), 
-                        positionX2,positionY2 ); 
-
-                    canvasElement.font="15px Arial";
-                    
-                    let positioX=result.landmarks.positions[3].x+80,
-                    positioY=result.landmarks.positions[12].y - -65;
-                    canvasElement.strokeText( (emotionPro), 
-                    positioX,positioY ); 
-
-
-                    let positiX=result.landmarks.positions[3].x+80,
-                    positiY=result.landmarks.positions[12].y - -55;
-                    canvasElement.strokeText( (edadPro), 
-                    positiX,positiY ); 
 
 
                     //imagen 
@@ -193,7 +169,25 @@ class FacePage extends Component {
                 <input type="number" 
                     style={{marginLeft:1000}} 
                     value={this.state.positionIndex} 
-                    onChange={(event)=>{this.setState({positionIndex: event.target.value})}}/>            
+                    onChange={(event)=>{this.setState({positionIndex: event.target.value})}}/>       
+
+                <br/>
+                <Button variant="contained" color="secondary" onClick={this.filtro1}> Filtro 1</Button>     
+                <Button variant="contained" color="secondary"> Filtro 2</Button>     
+                <Button variant="contained" color="secondary"> Filtro 3</Button>     
+                <Button variant="contained" color="secondary"> Filtro 4</Button>     
+                <Button variant="contained" color="secondary"> Filtro 5</Button>     
+                <Button variant="contained" color="secondary"> Filtro 6</Button>     
+                <Button variant="contained" color="secondary"> Filtro 7</Button>     
+                <Button variant="contained" color="secondary"> Filtro 8</Button>     
+                <Button variant="contained" color="secondary"> Filtro 9</Button>     
+                <Button variant="contained" color="secondary"> Filtro 10</Button>     
+                <Button variant="contained" color="secondary"> Filtro 11</Button>     
+                <Button variant="contained" color="secondary"> Filtro 12</Button>     
+                <Button variant="contained" color="secondary"> Filtro 13</Button>     
+                <Button variant="contained" color="secondary"> Filtro 14</Button>     
+                <Button variant="contained" color="secondary"> Filtro 15</Button>     
+                
             </div>            
         )
     }
