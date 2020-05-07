@@ -75,23 +75,29 @@ class FacePage extends Component {
 
                     //imagen 
                     let base_image = new Image();
-                    base_image.src = 'https://i.ya-webdesign.com/images/gafas-de-sol-png-2.png';
+                    base_image.src = 'https://library.kissclipart.com/20180904/ssq/kissclipart-champions-league-vector-clipart-afc-champions-leag-367e5593759d8d5b.jpg';
                     base_image.onload = function(){
-                        canvasElement.drawImage(base_image, result.landmarks.positions[36].x-27, 
-                                result.landmarks.positions[36].y-45.5,140,100);
+                        canvasElement.drawImage(base_image, result.landmarks.positions[0].x-27, 
+                                result.landmarks.positions[0].y+135,70,70);
                     }
                     
-                    let image_hair = new Image();
-                    image_hair.src = 'https://images.vexels.com/media/users/3/158176/isolated/preview/ad4cd827ccec990b9e09caa6abca84aa-ilustraci--n-de-cabello-de-hombres-de-flecos-laterales-by-vexels.png';
-                    image_hair.onload = function(){
-                        canvasElement.drawImage(image_hair, result.landmarks.positions[36].x-27, 
-                                result.landmarks.positions[36].y-125,175,100);
+                    let image_logo_fcb = new Image();
+                    image_logo_fcb.src = 'https://i.pinimg.com/originals/20/17/39/201739f9b29be8dcd9da06d52e4f8bca.png';
+                    image_logo_fcb.onload = function(){
+                        canvasElement.drawImage(image_logo_fcb, result.landmarks.positions[13].x+15, 
+                                result.landmarks.positions[13].y+80,80,50);
                     }
-                    let image_bigote = new Image();
-                    image_bigote.src = 'https://images.vexels.com/media/users/3/130976/isolated/preview/588dfd24cc787fe7cbf0616c1f425abf-bigote-inconformista-3-by-vexels.png';
-                    image_bigote.onload = function(){
-                        canvasElement.drawImage(image_bigote, result.landmarks.positions[36].x+10, 
-                                result.landmarks.positions[36].y+13,80,80);
+                    let image_ball_right = new Image();
+                    image_ball_right.src = 'https://upload.wikimedia.org/wikipedia/commons/5/51/Soccerball_shade.svg';
+                    image_ball_right.onload = function(){
+                        canvasElement.drawImage(image_ball_right, result.landmarks.positions[1].x+10, 
+                                result.landmarks.positions[1].y-13,40,40);
+                    }
+                    let image_ball_left = new Image();
+                    image_ball_left.src = 'https://upload.wikimedia.org/wikipedia/commons/5/51/Soccerball_shade.svg';
+                    image_ball_left.onload = function(){
+                        canvasElement.drawImage(image_ball_left, result.landmarks.positions[15].x-40, 
+                                result.landmarks.positions[15].y-13,40,40);
                     }
                         
 
